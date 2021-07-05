@@ -1,6 +1,9 @@
 package services
 
-import "FromGithub/first-step-go/src/api/domains"
+import (
+	"FromGithub/first-step-go/src/api/domains"
+	"FromGithub/first-step-go/src/api/enums"
+)
 
 type ConstructionService interface {
 	GetAllConstructions() ([]domains.Construction, error)
@@ -17,17 +20,22 @@ func NewConstructionService() ConstructionService{
 
 func (cs *constructionService) GetAllConstructions() ([]domains.Construction, error){
 	 const1 := domains.Construction{
+	 	Address: domains.Address{
+	 		Number: 1234, Street: "california Street"},
 		 ID:                1,
-		 TypeOfContruction: "garage",
+		 TypeOfContruction: enums.House,
 	 }
 
 	 const2 := domains.Construction{
-	 	ID: 2,
-	 	TypeOfContruction: "house",
+		 Address: domains.Address{
+		 	Number: 9876, Street: "chicago Street"},
+	 	ID:                2,
+	 	TypeOfContruction: enums.Flat,
 	 }
 
 	 listConstructions := []domains.Construction{
 		 const1, const2,
 	 }
+
 	 return listConstructions, nil
 }
